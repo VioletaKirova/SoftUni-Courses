@@ -1,0 +1,55 @@
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+
+public class Spy
+{
+    public string StealFieldInfo(string className, params string[] requestedFields)
+    {
+        StringBuilder result = new StringBuilder();
+
+        Type type = Type.GetType(className);
+
+        FieldInfo[] allFields = type.GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+
+        result.AppendLine($"Class under investigation: {className}");
+
+        object classInstance = Activator.CreateInstance(type, new object[] { });
+
+        foreach (var field in allFields.Where(f => requestedFields.Contains(f.Name)))
+        {
+            result.AppendLine($"{field.Name} = {field.GetValue(classInstance)}");
+        }
+
+        return result.ToString().TrimEnd();
+    }
+
+    public string AnalyzeAcessModifiers(string className)
+    {
+        StringBuilder result = new StringBuilder();
+
+        Type type = Type.GetType(className);
+
+        var allPublicFields = type.GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public);
+        var allPrivateGetters = type.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic).Where(m => m.Name.StartsWith("get"));
+        var allPublicSetters = type.GetMethods(BindingFlags.Instance | BindingFlags.Public).Where(m => m.Name.StartsWith("set"));
+
+        foreach (var field in allPublicFields)
+        {
+            result.AppendLine($"{field.Name} must be private!");
+        }
+
+        foreach (var getter in allPrivateGetters)
+        {
+            result.AppendLine($"{getter.Name} have to be public!");
+        }
+
+        foreach (var setter in allPublicSetters)
+        {
+            result.AppendLine($"{setter.Name} have to be private!");
+        }
+
+        return result.ToString().TrimEnd();
+    }
+}
