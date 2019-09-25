@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190307223534_InitialMigration.cs" />
+    <Compile Remove="Migrations\20190307232145_ProductsAddColumnDescription.cs" />
+    <Compile Remove="Migrations\20190307232556_SalesAddDateDefault.cs" />
+    <Compile Remove="Migrations\20190308001706_ProductsAddColumnDescription.cs" />
+    <Compile Remove="Migrations\20190308001842_SalesAddDateDefault.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\P03_SalesDatabase.Data.Models\P03_SalesDatabase.Data.Models.csproj" />
+  </ItemGroup>
+
+</Project>
