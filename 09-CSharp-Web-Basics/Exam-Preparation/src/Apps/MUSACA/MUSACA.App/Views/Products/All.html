@@ -1,0 +1,35 @@
+﻿<main class="mt-3">
+    <div class="products">
+        @{
+            int count = 0;
+        }
+        @foreach(var product in Model.Products)
+        {
+            @if(count == 0)
+            {
+                <div class="product-row d-flex justify-content-between mt-4">
+            }
+            @{
+                count++;
+            }
+            <div class="product border-musaca p-3 w-25">
+                <div class="text-holder d-flex justify-content-between">
+                    <h6>Name:</h6>
+                    <h6>@product.Name</h6>
+                </div>
+                <div class="text-holder d-flex justify-content-between">
+                    <h6>Price:</h6>
+                    <h6>@product.Price</h6>
+                </div>
+            </div>
+            @if(count == 3)
+            {
+                @{
+                    count = 0;
+                }
+                </div>
+            }
+        }
+        </div>
+    </div>
+</main>
