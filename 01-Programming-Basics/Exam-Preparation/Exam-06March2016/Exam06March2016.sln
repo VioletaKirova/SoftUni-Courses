@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-StupidPasswordGen", "StupidPasswordGenerator\06-StupidPasswordGen.csproj", "{65905ED0-9DD8-4D93-9868-19B7C9C910F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-TrainingLab", "01-TrainingLab\01-TrainingLab.csproj", "{46975EB8-6A85-4A15-9700-977C16CA9100}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-OnTimeForTheExam", "03-OnTimeForTheExam\03-OnTimeForTheExam.csproj", "{9A814B59-642E-4574-BABC-46DDBA840045}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65905ED0-9DD8-4D93-9868-19B7C9C910F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65905ED0-9DD8-4D93-9868-19B7C9C910F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65905ED0-9DD8-4D93-9868-19B7C9C910F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65905ED0-9DD8-4D93-9868-19B7C9C910F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46975EB8-6A85-4A15-9700-977C16CA9100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46975EB8-6A85-4A15-9700-977C16CA9100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46975EB8-6A85-4A15-9700-977C16CA9100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46975EB8-6A85-4A15-9700-977C16CA9100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A814B59-642E-4574-BABC-46DDBA840045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A814B59-642E-4574-BABC-46DDBA840045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A814B59-642E-4574-BABC-46DDBA840045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A814B59-642E-4574-BABC-46DDBA840045}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
