@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>_04_ShoppingSpree</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="StartUp.cs">
+      <Generator>tar</Generator>
+    </Compile>
+  </ItemGroup>
+
+</Project>
