@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.App", "Panda.App\Panda.App.csproj", "{0BB6EE4F-31C2-4B55-9E5C-872D303B34E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Data", "Panda.Data\Panda.Data.csproj", "{5E544E5D-5A50-4E15-8B9E-C2FC1D526D9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Domain", "Panda.Domain\Panda.Domain.csproj", "{9B97CF23-7A5F-4F37-AB35-BCE781DF1F98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BB6EE4F-31C2-4B55-9E5C-872D303B34E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB6EE4F-31C2-4B55-9E5C-872D303B34E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB6EE4F-31C2-4B55-9E5C-872D303B34E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB6EE4F-31C2-4B55-9E5C-872D303B34E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E544E5D-5A50-4E15-8B9E-C2FC1D526D9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E544E5D-5A50-4E15-8B9E-C2FC1D526D9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E544E5D-5A50-4E15-8B9E-C2FC1D526D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E544E5D-5A50-4E15-8B9E-C2FC1D526D9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B97CF23-7A5F-4F37-AB35-BCE781DF1F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B97CF23-7A5F-4F37-AB35-BCE781DF1F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B97CF23-7A5F-4F37-AB35-BCE781DF1F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B97CF23-7A5F-4F37-AB35-BCE781DF1F98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86A61AB9-E123-44A6-AC3A-C608B7EBEE52}
+	EndGlobalSection
+EndGlobal
