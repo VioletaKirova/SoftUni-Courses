@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _11_PriceChangeAlert
+{
+    class Program
+    {
+        static void Main()
+        {
+            int numberOfPrices = int.Parse(Console.ReadLine());
+            double significanceThreshold = double.Parse(Console.ReadLine());
+            double lastPrice = double.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numberOfPrices - 1; i++)
+            {
+                double currentPrice = double.Parse(Console.ReadLine());
+                double difference = findDifference(lastPrice, currentPrice);
+                bool hasSignificantDifference = findSignificantDifference(difference, significanceThreshold);
+                string message = printOutputMessage(currentPrice, lastPrice, difference, hasSignificantDifference);
+                Console.WriteLine(message);
+                lastPrice = currentPrice;
+            }
+        }
+
+        private static string printOutputMessage(double currentPrice, double lastPrice, double difference, bool hasSignificantDifference)
+        {
+            string outputMessage = "";
+
+            if (difference == 0)
+            {
+                outputMessage = string.Format("NO CHANGE: {0}", currentPrice);
+            }
+            else if (!hasSignificantDifference)
+            {
+                outputMessage = string.Format("MINOR CHANGE: {0} to {1} ({2:F2}%)", lastPrice, currentPrice, difference * 100);
+            }
+            else if (hasSignificantDifference && (difference > 0))
+            {
+                outputMessage = string.Format("PRICE UP: {0} to {1} ({2:F2}%)", lastPrice, currentPrice, difference * 100);
+            }
+            else if (hasSignificantDifference && (difference < 0))
+                outputMessage = string.Format("PRICE DOWN: {0} to {1} ({2:F2}%)", lastPrice, currentPrice, difference * 100);
+
+            return outputMessage;
+        }
+
+        private static bool findSignificantDifference(double difference, double significanceThreshold)
+        {
+            if (Math.Abs(difference) >= significanceThreshold)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static double findDifference(double lastPrice, double currentPrice)
+        {
+            double difference = (currentPrice - lastPrice) / lastPrice;
+            return difference;
+        }
+    }
+}
