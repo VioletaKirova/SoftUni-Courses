@@ -1,3 +1,3 @@
-function solve(currencyFormatter){
-    return (value) => currencyFormatter(",", "$", true, value);
+function solve(currencyFormatter) {
+  return value => currencyFormatter(",", "$", true, value);
 }

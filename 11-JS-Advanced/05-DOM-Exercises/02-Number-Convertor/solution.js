@@ -1,32 +1,34 @@
 function solve() {
-    const operationsMap = {
-        binary: (x) => x.toString(2),
-        hexadecimal: (x) => x.toString(16).toUpperCase()
-    };
+  const operationsMap = {
+    binary: x => x.toString(2),
+    hexadecimal: x => x.toString(16).toUpperCase()
+  };
 
-    let optionsParent = document.getElementById("selectMenuTo");
+  let optionsParent = document.getElementById("selectMenuTo");
 
-    let binaryOption = document.createElement("option");
-    binaryOption.value = "binary";
-    binaryOption.innerHTML = "Binary";
+  let binaryOption = document.createElement("option");
+  binaryOption.value = "binary";
+  binaryOption.innerHTML = "Binary";
 
-    let hexadecimalOption = document.createElement("option");
-    hexadecimalOption.value = "hexadecimal";
-    hexadecimalOption.innerHTML = "Hexadecimal";
+  let hexadecimalOption = document.createElement("option");
+  hexadecimalOption.value = "hexadecimal";
+  hexadecimalOption.innerHTML = "Hexadecimal";
 
-    optionsParent.appendChild(binaryOption);
-    optionsParent.appendChild(hexadecimalOption);
+  optionsParent.appendChild(binaryOption);
+  optionsParent.appendChild(hexadecimalOption);
 
-    function convert(){
-        let selectedOption = document.getElementById("selectMenuTo");
-        let input = document.getElementById("input");
+  function convert() {
+    let selectedOption = document.getElementById("selectMenuTo");
+    let input = document.getElementById("input");
 
-        if(selectedOption.value !== "" && input.value !== ""){
-            let result = operationsMap[selectedOption.value](Number(input.value));
-            let output = document.getElementById("result");
-            output.value = result;
-        }
+    if (selectedOption.value !== "" && input.value !== "") {
+      let result = operationsMap[selectedOption.value](Number(input.value));
+      let output = document.getElementById("result");
+      output.value = result;
     }
+  }
 
-    document.querySelector("#container button").addEventListener("click", convert);
+  document
+    .querySelector("#container button")
+    .addEventListener("click", convert);
 }

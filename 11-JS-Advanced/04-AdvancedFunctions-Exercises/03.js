@@ -1,13 +1,13 @@
-let add = (function solve(){
-    let sum = 0;
+let add = (function solve() {
+  let sum = 0;
 
-    return function add(num){
-        sum += num;
+  return function add(num) {
+    sum += num;
 
-        add.toString = () => sum;       
+    add.toString = () => sum;
 
-        return add;
-    }
-}());
+    return add;
+  };
+})();
 
 console.log(add(1)(6)(-3).toString());

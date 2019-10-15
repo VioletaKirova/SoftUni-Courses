@@ -1,17 +1,27 @@
 // Score: 66/100
 
-function solve(arr){
-    let orderedArrays = Array.from(new Set(arr
-        .map(x => x.split(/["\[\], ]/gim).filter(y => y !== "").map(z => Number(z)))
+function solve(arr) {
+  let orderedArrays = Array.from(
+    new Set(
+      arr
+        .map(x =>
+          x
+            .split(/["\[\], ]/gim)
+            .filter(y => y !== "")
+            .map(z => Number(z))
+        )
         .map(x => x.sort((a, b) => b - a))
-        .map(x => `[${x.join(", ")}]`)))
-        .sort((a, b) => a.length - b.length)
-        .join("\n");
+        .map(x => `[${x.join(", ")}]`)
+    )
+  )
+    .sort((a, b) => a.length - b.length)
+    .join("\n");
 
-    console.log(orderedArrays);
+  console.log(orderedArrays);
 }
 
-solve(["[-3, -2, -1, 0, 1, 2, 3, 4]",
-"[10, 1, -17, 0, 2, 13]",
-"[4, -3, 3, -2, 2, -1, 1, 0]"]
-);
+solve([
+  "[-3, -2, -1, 0, 1, 2, 3, 4]",
+  "[10, 1, -17, 0, 2, 13]",
+  "[4, -3, 3, -2, 2, -1, 1, 0]"
+]);

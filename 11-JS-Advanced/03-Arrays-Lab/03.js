@@ -1,15 +1,15 @@
-function solve(arr){
-    const actionsMap = {
-        true: "unshift",
-        false: "push"
-    }
+function solve(arr) {
+  const actionsMap = {
+    true: "unshift",
+    false: "push"
+  };
 
-    let result = arr.reduce((result, x) => { 
-        result[actionsMap[x < 0]](x); 
-        return result }, 
-        []);
+  let result = arr.reduce((result, x) => {
+    result[actionsMap[x < 0]](x);
+    return result;
+  }, []);
 
-    console.log(result);
+  console.log(result);
 }
 
 solve([7, -2, 8, 9]);
