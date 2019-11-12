@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  font-family: "Open Sans", serif;
+  color: #03254c;
+}
+h1{
+  margin: 0px;
+}
+h3{
+  margin: 24px 0px 4px 0px;
+}
+input[type="text"] {
+  padding: 12px 20px;
+  margin: 2px 0px 4px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+button {
+  background-color: #03254c;
+  color: white;
+  margin-top: 4px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #1c4966;
+}
+.deleteBtn {
+  margin: 5px;
+  padding: 5px;
+  background-color: #b22222;
+}
+.deleteBtn:hover {
+  background-color: #cd5c5c;
+}
+ul {
+  list-style-type: none;
+  padding: 0; 
+  margin: 2px;
+}
