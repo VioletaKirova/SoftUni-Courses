@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Biggest Catch</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <h1>Biggest Catches</h1>
+    <p id="message"></p>
+    <fieldset id="main">
+        <legend>Catches</legend>
+        <div id="catches"></div>
+    </fieldset>
+    <aside>
+        <button id="loadBtn" class="load">Load</button>
+        <fieldset id="addForm">
+            <legend>Add Catch</legend>
+            <label>Angler</label>
+            <input id="anglerInput" type="text" class="angler" />
+            <label>Weight</label>
+            <input id="weightInput" type="number" class="weight" />
+            <label>Species</label>
+            <input id="speciesInput" type="text" class="species" />
+            <label>Location</label>
+            <input id="locationInput" type="text" class="location" />
+            <label>Bait</label>
+            <input id="baitInput" type="text" class="bait" />
+            <label>Capture Time</label>
+            <input id="captureTimeInput" type="number" class="captureTime" />
+            <button id="addBtn" class="add">Add</button>
+        </fieldset>
+    </aside>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>

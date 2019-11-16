@@ -1,0 +1,86 @@
+* {
+    font-size: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#content {
+  width: 75%;
+  margin: 0 auto;
+}
+
+div.forecasts {
+  display: inline-block;
+  width: 30%;
+  border: 1px solid #bbdefb;
+  border-radius: 4px;
+  margin: 2% 2% 0.5% 0.5%;
+}
+
+div.forecast-info {
+  border: 1px solid #bbdefb;
+  border-radius: 4px;
+  margin-bottom: 1%;
+}
+
+#request {
+  text-align: center;
+}
+
+.bl {
+  width: 300px;
+}
+
+#current,
+#message {
+  text-align: center;
+  font-size: 2em;
+}
+
+#upcoming {
+  text-align: center;
+}
+
+.condition {
+  text-align: left;
+  display: inline-block;
+}
+
+.symbol {
+  font-size: 4em;
+  display: inline-block;
+}
+
+.forecast-data {
+  display: block;
+}
+
+.upcoming {
+  display: inline-block;
+  margin: 1.5em;
+}
+
+.label {
+  margin-top: 1em;
+  font-size: 1.5em;
+  background-color: #bbdefb;
+  font-weight: 400;
+}
+
+#message {
+  margin-top: 1em;
+  font-size: 1.5em;
+  background-color: #fa8072;
+  font-weight: 400;
+}
+
+input {
+  padding: 10px 12px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="button"] {
+  background-color: #bbdefb;
+}
