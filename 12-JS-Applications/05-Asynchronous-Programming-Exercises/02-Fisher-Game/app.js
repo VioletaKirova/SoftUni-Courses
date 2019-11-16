@@ -48,8 +48,8 @@ function createField(labelName, type, className, value) {
   return `<label>${labelName}</label>\n<input type="${type}" class="${className}" value="${value}" />\n<hr>`;
 }
 
-function createActionButtons() {
-  return `<button id="updateBtn" class="update">Update</button>\n<button id="deleteBtn" class="delete">Delete</button>\n`;
+function clone(selector) {
+  return document.querySelector(selector).cloneNode(true);
 }
 
 async function loadCatches() {
@@ -57,7 +57,6 @@ async function loadCatches() {
   html.message().textContent = "";
 
   const catchFields = new Array(6);
-
   let catches;
 
   try {
@@ -68,9 +67,9 @@ async function loadCatches() {
 
   if (catches !== undefined) {
     Object.entries(catches).forEach(x => {
-      const parentDiv = createElem("div");
-      parentDiv.classList.add("catch");
-      parentDiv.setAttribute("data-id", x[0]);
+      const wrapperDiv = createElem("div");
+      wrapperDiv.classList.add("catch");
+      wrapperDiv.setAttribute("data-id", x[0]);
 
       catchFields[0] = createField("Angler", "text", "angler", x[1].angler);
       catchFields[1] = createField("Weight", "number", "weight", Number(x[1].weight));
@@ -79,8 +78,9 @@ async function loadCatches() {
       catchFields[4] = createField("Bait", "text", "bait", x[1].bait);
       catchFields[5] = createField("Capture Time", "number", "captureTime", Number(x[1].captureTime));
 
-      parentDiv.innerHTML = `${catchFields.join("\n")}${createActionButtons()}`;
-      html.catchesDiv().appendChild(parentDiv);
+      wrapperDiv.innerHTML = `${catchFields.join("\n")}`;
+      wrapperDiv.append(updateBtn.cloneNode(true), deleteBtn.cloneNode(true));
+      html.catchesDiv().appendChild(wrapperDiv);
     });
   }
 }
@@ -185,13 +185,20 @@ const baseUrl = "https://fisher-game.firebaseio.com/catches";
 
 const actions = {
   loadBtn: loadCatches,
-  updateBtn: updateCatch,
-  deleteBtn: deleteCatch,
-  addBtn: addCatch
+  addBtn: addCatch,
+  update: updateCatch,
+  delete: deleteCatch
 };
+
+const updateBtn = clone("button.update");
+const deleteBtn = clone("button.delete");
+
+html.catchesDiv().innerHTML = "";
 
 document.addEventListener("click", function(e) {
   if (actions[e.target.id] !== undefined) {
     actions[e.target.id](e);
+  } else if (actions[e.target.className] !== undefined) {
+    actions[e.target.className](e);
   }
 });

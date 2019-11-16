@@ -1,8 +1,5 @@
 import { fetchData } from "./fetchData.js";
-
-function createElem(tag) {
-  return document.createElement(tag);
-}
+import { createElement } from "./createElement.js";
 
 function formatTemperature(low, high) {
   return `${low}&deg;/${high}&deg;`;
@@ -10,74 +7,41 @@ function formatTemperature(low, high) {
 
 function displayCurrentConditions(resObj) {
   html.message().textContent = "";
-  html.currentDiv().innerHTML = `<div class="label">Current conditions</div>`;
+  html.currentDiv().innerHTML = currentDivLabel;
 
-  const parentDiv = createElem("div");
-  parentDiv.classList.add("forecasts");
+  const { forecast, name } = resObj;
+  const symbolContent = weatherSymbolsMap[forecast.condition];
+  const temperatureContent = formatTemperature(forecast.low, forecast.high);
 
-  const symbol = createElem("span");
-  symbol.classList.add("condition");
-  symbol.classList.add("symbol");
-  symbol.innerHTML = weatherSymbolsMap[resObj.forecast.condition];
+  const wrapperDiv = createElement("div", ["forecasts"]);
+  const symbol = createElement("span", ["condition", "symbol"], symbolContent);
+  const wrapperSpan = createElement("span", ["condition"]);
+  const townName = createElement("span", ["forecast-data"], name);
+  const temperature = createElement("span", ["forecast-data"], temperatureContent);
+  const condition = createElement("span", ["forecast-data"], forecast.condition);
 
-  const conditionSpan = createElem("span");
-  conditionSpan.classList.add("condition");
+  wrapperSpan.append(townName, temperature, condition);
+  wrapperDiv.append(symbol, wrapperSpan);
 
-  const townName = createElem("span");
-  townName.classList.add("forecast-data");
-  townName.textContent = resObj.name;
-
-  const temperature = createElem("span");
-  temperature.classList.add("forecast-data");
-  temperature.innerHTML = formatTemperature(
-    resObj.forecast.low,
-    resObj.forecast.high
-  );
-
-  const condition = createElem("span");
-  condition.classList.add("forecast-data");
-  condition.textContent = resObj.forecast.condition;
-
-  conditionSpan.appendChild(townName);
-  conditionSpan.appendChild(temperature);
-  conditionSpan.appendChild(condition);
-
-  parentDiv.appendChild(symbol);
-  parentDiv.appendChild(conditionSpan);
-
-  html.currentDiv().appendChild(parentDiv);
+  html.currentDiv().appendChild(wrapperDiv);
 }
 
 function displayThreeDayForecast(resObj) {
-  html.upcomingDiv().innerHTML = `<div class="label">Three-day forecast</div>`;
+  html.upcomingDiv().innerHTML = upcomingDivLabel;
 
-  const parentDiv = createElem("div");
-  parentDiv.classList.add("forecast-info");
+  const wrapperDiv = createElement("div", ["forecast-info"]);
 
   resObj.forecast.forEach(x => {
-    const upcomingSpan = createElem("span");
-    upcomingSpan.classList.add("upcoming");
+    const wrapperSpan = createElement("span", ["upcoming"]);
+    const symbol = createElement("span", ["symbol"], weatherSymbolsMap[x.condition]);
+    const temperature = createElement("span", ["forecast-data"], formatTemperature(x.low, x.high));
+    const condition = createElement("span", ["forecast-data"], x.condition);
 
-    const symbol = createElem("span");
-    symbol.classList.add("symbol");
-    symbol.innerHTML = weatherSymbolsMap[x.condition];
-
-    const temperature = createElem("span");
-    temperature.classList.add("forecast-data");
-    temperature.innerHTML = formatTemperature(x.low, x.high);
-
-    const condition = createElem("span");
-    condition.classList.add("forecast-data");
-    condition.textContent = x.condition;
-
-    upcomingSpan.appendChild(symbol);
-    upcomingSpan.appendChild(temperature);
-    upcomingSpan.appendChild(condition);
-
-    parentDiv.appendChild(upcomingSpan);
+    wrapperSpan.append(symbol, temperature, condition);
+    wrapperDiv.appendChild(wrapperSpan);
   });
 
-  html.upcomingDiv().appendChild(parentDiv);
+  html.upcomingDiv().appendChild(wrapperDiv);
 }
 
 async function getForecast() {
@@ -99,7 +63,6 @@ async function getForecast() {
     const currentConditions = await fetchData(
       `${baseUrl}forecast/today/${location.code}.json`
     );
-
     const threeDayForecast = await fetchData(
       `${baseUrl}forecast/upcoming/${location.code}.json`
     );
@@ -112,6 +75,8 @@ async function getForecast() {
 }
 
 const baseUrl = "https://judgetests.firebaseio.com/";
+const currentDivLabel = `<div class="label">Current conditions</div>`;
+const upcomingDivLabel = `<div class="label">Three-day forecast</div>`;
 
 const html = {
   button: () => document.getElementById("submit"),
