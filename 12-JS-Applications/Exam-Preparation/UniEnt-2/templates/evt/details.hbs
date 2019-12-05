@@ -1,0 +1,26 @@
+{{> header}}
+
+{{> notifications}}
+
+<div class="row event-details">
+  <div class="col-md-12 text-center overflow-hidden">
+    <img class="details-img"
+      src="{{evt.imageURL}}" />
+    <div class="my-3 p-3">
+      <h2 class="display-5">{{evt.name}}</h2>
+      <p class="infoType">Description:</p>
+      <p class="event-description">{{evt.description}}</p>
+      <p class="infoType">Date: <small>{{evt.dateTime}}</small></p>
+      <p class="infoType">Peope interested in: <small>{{evt.peopleInterestedIn}}</small></p>
+      <p class="infoType">Organizer: <small>{{evt.organizer}}</small></p>
+    </div>
+    {{#if isCreator }}
+    <a href="#/edit/{{evt._id}}" class="btn btn-primary btn-lg">Edit the event</a>
+    <a href="#/delete/{{evt._id}}" class="btn btn-danger btn-lg">Close the event</a>
+    {{else}}
+    <a href="#/join/{{evt._id}}" class="btn btn-info btn-lg">Join the event</a>
+    {{/if}}
+  </div>
+</div>
+
+{{> footer}}
