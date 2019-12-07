@@ -1,4 +1,9 @@
-import { getSessionInfo, partials } from "../common.js";
+import {
+  getSessionInfo,
+  partials,
+  showNotification,
+  errorNotify
+} from "../common.js";
 import { get, post, put, del } from "../requester.js";
 
 export function getCreate(ctx) {
@@ -22,10 +27,14 @@ export function postCreate(ctx) {
   };
 
   post("appdata", "events", data, "Kinvey")
-    .then(() => {;
-      ctx.redirect("#/");
+    .then(() => {
+      showNotification("successBox", "You successfully created an event!");
+      setTimeout(() => ctx.redirect("#/"), 3000);
     })
-    .catch(console.error);
+    .catch(err => {
+      console.log(err);
+      errorNotify();
+    });
 }
 
 export function getDetails(ctx) {
@@ -75,17 +84,23 @@ export function postEdit(ctx) {
 
   put("appdata", `events/${id}`, data, "Kinvey")
     .then(() => {
-      ctx.redirect(`#/details/${id}`);
+      showNotification("successBox", "You successfully edited the event!");
+      setTimeout(() => ctx.redirect(`#/details/${id}`), 3000);
     })
-    .catch(console.error);
+    .catch(err => {
+      console.log(err);
+      errorNotify();
+    });
 }
 
 export function processDelete(ctx) {
-  del("appdata", `events/${ctx.params.id}`, {}, "Kinvey")
-    .then(() => {
-      ctx.redirect("#/");
-    })
-    .catch(console.error);
+  if (confirm("Are you sure you want to close the event?")) {
+    del("appdata", `events/${ctx.params.id}`, {}, "Kinvey")
+      .then(() => {
+        ctx.redirect("#/");
+      })
+      .catch(console.error);
+  }
 }
 
 export function processJoin(ctx) {

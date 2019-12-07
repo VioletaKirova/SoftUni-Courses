@@ -1,16 +1,36 @@
-import { getSessionInfo, partials } from "../common.js";
+import {
+  getSessionInfo,
+  partials,
+  showNotification,
+  errorNotify
+} from "../common.js";
 import { post, get } from "../requester.js";
 
-function loginUser(ctx, username, password) {
+function loginUser(ctx, username, password, isNewUser) {
   post("user", "login", { username, password }, "Basic")
     .then(data => {
       sessionStorage.setItem("userId", data._id);
       sessionStorage.setItem("authtoken", data._kmd.authtoken);
       sessionStorage.setItem("username", data.username);
 
-      ctx.redirect("#/");
+      if (isNewUser) {
+        showNotification("successBox", "You registered successfully!");
+      } else {
+        showNotification("successBox", "You logged in successfully!");
+      }
+
+      setTimeout(() => ctx.redirect("#/"), 3000);
     })
-    .catch(console.error);
+    .catch(err => {
+      const message = JSON.parse(err.message);
+
+      if (message.status == 401) {
+        errorNotify("Username or password is incorrect!");
+      } else {
+        console.log(err);
+        errorNotify();
+      }
+    });
 }
 
 export function getRegister(ctx) {
@@ -25,11 +45,20 @@ export function postRegister(ctx) {
   if (password === rePassword) {
     post("user", "", { username, password }, "Basic")
       .then(() => {
-        loginUser(ctx, username, password);
+        loginUser(ctx, username, password, true);
       })
-      .catch(console.error);
+      .catch(err => {
+        const message = JSON.parse(err.message);
+
+        if (message.status == 409) {
+          errorNotify("The username is already taken!");
+        } else {
+          console.log(err);
+          errorNotify();
+        }
+      });
   } else {
-    alert("Password and Repeat Password do not match.");
+    errorNotify("Password and Re-Password do not match!");
   }
 }
 
@@ -42,7 +71,7 @@ export function getLogin(ctx) {
 export function postLogin(ctx) {
   const { username, password } = ctx.params;
 
-  loginUser(ctx, username, password);
+  loginUser(ctx, username, password, false);
 }
 
 export function postLogout(ctx) {
