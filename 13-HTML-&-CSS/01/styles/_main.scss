@@ -1,0 +1,146 @@
+.blue-article,
+.white-article {
+  display: flex;
+  width: 90%;
+  height: 100vh;
+}
+
+.white-article {
+  margin-left: 10%;
+}
+
+.blue-article {
+  @include setColors($whiteColor, $blueColor);
+}
+
+.white-article {
+  @include setColors($blueColor, $whiteColor);
+}
+
+.blue-article-container {
+  background: $blueColor;
+}
+
+.white-article-container {
+  background: $whiteColor;
+}
+
+.blue-article-img-container,
+.white-article-img-container,
+.white-article-img-container-mobile {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 50%;
+}
+
+.blue-article-img,
+.white-article-img {
+  position: relative;
+}
+
+.blue-article-img-border,
+.white-article-img-border,
+.white-article-img-border-mobile {
+  position: absolute;
+}
+
+.blue-article-img,
+.blue-article-img-border,
+.white-article-img,
+.white-article-img-border,
+.white-article-img-mobile,
+.white-article-img-border-mobile {
+  @include setResponsiveSize(100%, auto);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.white-article-img,
+.white-article-img-border {
+  padding-top: 136px;
+}
+
+.white-article-img-container-mobile,
+.white-article-img-mobile,
+.white-article-img-border-mobile {
+  display: none;
+}
+
+.blue-article-text-content-container,
+.white-article-text-content-container {
+  display: flex;
+  flex-direction: column;
+  width: 44%;
+}
+
+.blue-article-p-container {
+  font-size: 20px;
+  padding: 136px 40px 20px 30px;
+}
+
+.white-article-p-container {
+  font-size: 20px;
+  text-align: right;
+  padding: 136px 30px 20px 40px;
+}
+
+.blue-article-shape-container,
+.white-article-shape-container {
+  width: 41.5%;
+}
+
+.blue-article-shape,
+.white-article-shape {
+  @include setResponsiveSize(100%, auto);
+}
+
+.blue-article-shape,
+.white-article-shape {
+  transform: translate(-33px, -245px);
+}
+
+.blue-article-arrows-container,
+.white-article-arrows-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding-top: 5px;
+}
+
+.blue-article-arrow,
+.white-article-arrow {
+  width: 40px;
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+  }
+}
+
+.blue-article-heading-container-mobile,
+.white-article-heading-container-mobile,
+.blue-article-heading-mobile,
+.white-article-heading-mobile {
+  display: none;
+}
+
+.blue-article-heading-container,
+.white-article-heading-container {
+  width: 6%;
+}
+
+.blue-article-heading-container-mobile,
+.white-article-heading-container-mobile {
+  height: 9%;
+}
+
+.blue-article-heading,
+.white-article-heading {
+  @include setResponsiveSize(100%, auto);
+}
+
+.blue-article-heading-mobile,
+.white-article-heading-mobile {
+  @include setResponsiveSize(auto, 100%);
+}
