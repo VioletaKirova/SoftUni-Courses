@@ -1,0 +1,58 @@
+/*----- Navigation -----*/
+
+header {
+  background: $whiteColor;
+}
+
+nav {
+  display: flex;
+  min-height: 12vh;
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  color: $blueColor;
+}
+
+.nav-link {
+  padding: 0 0 0 40px;
+  text-decoration: none;
+  color: $blueColor;
+  font-weight: 550;
+  &:hover {
+    color: $orangeColor;
+  }
+}
+
+.nav-hamburger-menu-icon {
+  display: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.nav-hamburger-menu-container {
+  display: none;
+  width: 80%;
+  margin: auto;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.nav-hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 3;
+}
+
+.nav-hamburger-link {
+  padding: 16px;
+  text-decoration: none;
+  font-weight: 550;
+  @include setColors($blueColor, $whiteColor);
+  &:hover {
+    @include setColors($whiteColor, $yellowColor);
+  }
+}
+
