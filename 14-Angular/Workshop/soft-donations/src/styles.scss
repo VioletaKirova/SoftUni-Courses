@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Karla&display=swap');
+
+html{
+    scroll-behavior: smooth;
+    font-family: 'Karla', sans-serif;
+}
+
+body{
+    padding: 0.5%;
+    font-family: inherit;
+    scroll-behavior: smooth;
+}
+
+h1{
+    text-align: center;
+}
+
+// Form Validation
+
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid, 
+div.ng-touched.ng-invalid input {
+    border: 1px solid rgb(224, 0, 0);
+}
+
+.error-message {
+    margin-top: 5px;
+    color:rgb(224, 0, 0);
+    font-style: italic;
+}
+
+textarea.ng-valid,
+input.ng-valid {
+    border: 1px solid rgb(1, 189, 1);
+}
+
+.valid-message {
+    margin-top: 5px;
+    color:rgb(1, 189, 1);
+    font-style: italic;
+}

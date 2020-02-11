@@ -1,0 +1,57 @@
+<div class="col-md-4"></div>
+<div class="col-md-4">
+  <h1 class="text-italic">Register</h1>
+  <form #regiserForm="ngForm" (ngSubmit)="handleRegister(regiserForm.value)">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input
+        ngModel
+        #emailInput="ngModel"
+        type="text"
+        name="email"
+        id="email"
+        class="form-control"
+        placeholder="john.doe@domain.bg"
+        pattern="^[a-zA-Z0-9.-_]{6,}@gmail\.(com|bg)$"
+        required
+      />
+      <p *ngIf="emailInput?.touched && emailInput?.invalid" class="error-message">Email is invalid!</p>
+      <p *ngIf="emailInput?.valid" class="valid-message">Validation passed!</p>
+    </div>
+    <div #passwordsGroup="ngModelGroup" ngModelGroup="passwords" appPasswordMatch>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          #passwordInput="ngModel"
+          ngModel
+          type="password"
+          name="password"
+          id="password"
+          class="form-control"
+          placeholder="************"
+          minlength=6
+          required
+        />
+        <p *ngIf="passwordInput?.touched && passwordInput?.invalid" class="error-message">Password is invalid!</p>
+      </div>
+      <div class="form-group">
+        <label for="rePassword">Re-Password</label>
+        <input
+          #rePasswordInput="ngModel"
+          ngModel
+          type="password"
+          name="rePassword"
+          id="rePassword"
+          class="form-control"
+          placeholder="************"
+        />
+      </div>
+      <p *ngIf="passwordsGroup?.touched && passwordsGroup?.invalid" class="error-message">Passwords do not match!</p>
+      <p *ngIf="passwordsGroup?.touched && passwordsGroup?.valid" class="valid-message">Validation passed!</p>
+    </div>
+    <button [disabled]="regiserForm.invalid" class="btn btn-primary">
+      Register
+    </button>
+  </form>
+  <p>Already Registered? <a routerLink="/user/login">Login</a>.</p>
+</div>
