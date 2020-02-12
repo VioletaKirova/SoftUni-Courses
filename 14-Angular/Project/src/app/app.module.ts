@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { MaterialModule } from './core/material/material.module';
+import { AuthModule } from './components/authentication/auth.module';
+import { AdminModule } from './components/admin/admin.module';
+import { MenuModule } from './components/shared/menu/menu.module';
+import { CourseModule } from './components/course/course.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { MaterialModule } from './core/material/material.module';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    AuthModule,
+    AdminModule,
+    MenuModule,
+    CourseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
