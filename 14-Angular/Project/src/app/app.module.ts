@@ -9,10 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { MaterialModule } from './core/material/material.module';
+import { SharedModule } from './components/shared/shared.module';
 import { AuthModule } from './components/authentication/auth.module';
 import { AdminModule } from './components/admin/admin.module';
-import { MenuModule } from './components/shared/menu/menu.module';
 import { CourseModule } from './components/course/course.module';
+import { GeneralModule } from './components/general/general.module';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,10 @@ import { CourseModule } from './components/course/course.module';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     MaterialModule,
+    SharedModule,
+    GeneralModule,
     AuthModule,
     AdminModule,
-    MenuModule,
     CourseModule
   ],
   providers: [],
