@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AuthService } from './core/services/authentication/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +7,10 @@ import { AngularFireDatabase } from '@angular/fire/database';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'ng-uni';
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.db.list('/courses').valueChanges().subscribe(data => {
-      console.log(data);
-    });
-  }
+    this.authService.initializeAuthState();
+   }
 }
